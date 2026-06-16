@@ -104,22 +104,55 @@ document.getElementById("connectBtn").addEventListener("click", async () => {
         panelCanales.innerHTML =
           `<h2>${cat.category_name}</h2>`;
 
-        canales.forEach(canal => {
+       canales.forEach(canal => {
 
-          const item =
-            document.createElement("div");
+  const item = document.createElement("div");
 
-          item.textContent =
-            canal.name;
+  item.textContent = canal.name;
 
-          item.style.padding = "10px";
-          item.style.marginBottom = "8px";
-          item.style.background = "#24324b";
-          item.style.borderRadius = "8px";
+  item.style.padding = "10px";
+  item.style.marginBottom = "8px";
+  item.style.background = "#24324b";
+  item.style.borderRadius = "8px";
+  item.style.cursor = "pointer";
 
-          panelCanales.appendChild(item);
+  item.onclick = async () => {
 
-        });
+    try {
+
+      const respuesta = await fetch(
+        "http://localhost:3000/api/live-url",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            host,
+            username,
+            password,
+            stream_id: canal.stream_id
+          })
+        }
+      );
+
+      const datos = await respuesta.json();
+
+      // Abre el stream en una pestaña nueva
+      window.open(datos.url, "_blank");
+
+    } catch (error) {
+
+      console.error(error);
+      alert("No se pudo abrir el canal.");
+
+    }
+
+  };
+
+  panelCanales.appendChild(item);
+
+});
 
       };
 
