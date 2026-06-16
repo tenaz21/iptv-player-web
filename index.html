@@ -1,11 +1,38 @@
-<div class="login">
-  <h1>📺 Mi IPTV Player</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IPTV Player</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-  <input id="host" type="text" placeholder="Servidor (https://ejemplo.com)">
-  <input id="user" type="text" placeholder="Usuario">
-  <input id="pass" type="password" placeholder="Contraseña">
+<div class="background"></div>
 
-  <button id="connectBtn">Conectar</button>
+<div class="card">
+
+  <div class="logo">📺</div>
+
+  <h1>IPTV Player</h1>
+
+  <p class="subtitle">
+    Inicia sesión con tu servidor Xtream Codes
+  </p>
+
+  <input id="host" type="text" placeholder="🌐 Servidor">
+  <input id="user" type="text" placeholder="👤 Usuario">
+  <input id="pass" type="password" placeholder="🔒 Contraseña">
+
+  <button id="connectBtn">
+    Conectar
+  </button>
 
   <p id="status"></p>
+
 </div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
