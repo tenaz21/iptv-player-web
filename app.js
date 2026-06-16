@@ -1,11 +1,7 @@
-function cargarCanal(url) {
-  const video = document.getElementById("video");
+document.getElementById("connectBtn").addEventListener("click", () => {
+  const host = document.getElementById("host").value.trim();
+  const user = document.getElementById("user").value.trim();
 
-  if (Hls.isSupported()) {
-    const hls = new Hls();
-    hls.loadSource(url);
-    hls.attachMedia(video);
-  } else {
-    video.src = url;
-  }
-}
+  document.getElementById("status").textContent =
+    `Datos introducidos para ${host} (usuario: ${user}).`;
+});
