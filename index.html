@@ -2,28 +2,25 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Reproductor IPTV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi IPTV Player</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>📺 Mi Reproductor IPTV</h1>
+<div class="login">
+  <h1>📺 Mi IPTV Player</h1>
 
-  <div class="contenedor">
-    <div class="lista">
-      <button onclick="cargarCanal('https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8')">
-        Canal de prueba
-      </button>
-    </div>
+  <input id="host" type="text" placeholder="Servidor (https://ejemplo.com)">
+  <input id="user" type="text" placeholder="Usuario">
+  <input id="pass" type="password" placeholder="Contraseña">
 
-    <div class="player">
-      <video id="video" controls autoplay></video>
-    </div>
-  </div>
+  <button id="connectBtn">Conectar</button>
 
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-  <script src="app.js"></script>
+  <p id="status"></p>
+</div>
+
+<script src="app.js"></script>
 
 </body>
 </html>
