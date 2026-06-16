@@ -8,27 +8,56 @@
 </head>
 <body>
 
-<div class="background"></div>
-
-<div class="card">
-
+<div id="loginPage" class="login-card">
   <div class="logo">📺</div>
-
   <h1>IPTV Player</h1>
 
   <p class="subtitle">
-    Inicia sesión con tu servidor Xtream Codes
+    Inicia sesión con tu servidor Xtream
   </p>
 
-  <input id="host" type="text" placeholder="🌐 Servidor">
-  <input id="user" type="text" placeholder="👤 Usuario">
+  <input id="host" placeholder="🌐 Servidor">
+  <input id="user" placeholder="👤 Usuario">
   <input id="pass" type="password" placeholder="🔒 Contraseña">
 
-  <button id="connectBtn">
-    Conectar
-  </button>
+  <button id="connectBtn">Conectar</button>
+</div>
 
-  <p id="status"></p>
+<div id="homePage" style="display:none;">
+
+  <aside class="sidebar">
+    <h2>📺 IPTV</h2>
+
+    <button>📺 TV en vivo</button>
+    <button>🎬 Películas</button>
+    <button>📂 Series</button>
+    <button>⭐ Favoritos</button>
+    <button>⚙️ Ajustes</button>
+  </aside>
+
+  <main class="content">
+
+    <h1>Bienvenido</h1>
+
+    <video controls width="100%"></video>
+
+    <div class="channels">
+
+      <div class="channel">
+        Canal 1
+      </div>
+
+      <div class="channel">
+        Canal 2
+      </div>
+
+      <div class="channel">
+        Canal 3
+      </div>
+
+    </div>
+
+  </main>
 
 </div>
 
