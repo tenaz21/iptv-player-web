@@ -1,7 +1,19 @@
-document.getElementById("connectBtn").addEventListener("click", () => {
-  const host = document.getElementById("host").value.trim();
-  const user = document.getElementById("user").value.trim();
+const btn = document.getElementById("connectBtn");
 
-  document.getElementById("status").textContent =
-    `Datos introducidos para ${host} (usuario: ${user}).`;
-});
+btn.onclick = () => {
+
+    const host = document.getElementById("host").value;
+    const user = document.getElementById("user").value;
+    const pass = document.getElementById("pass").value;
+
+    if(!host || !user || !pass){
+
+        document.getElementById("status").innerHTML =
+        "⚠️ Completa todos los campos.";
+
+        return;
+    }
+
+    document.getElementById("status").innerHTML =
+    "✅ Datos introducidos correctamente.";
+};
