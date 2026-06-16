@@ -155,3 +155,48 @@ button:hover{
     margin-top:20px;
 
 }
+#homePage{
+    display:flex;
+    width:100%;
+    height:100vh;
+}
+
+.sidebar{
+    width:240px;
+    background:#121b2d;
+    padding:20px;
+}
+
+.sidebar h2{
+    color:white;
+    margin-bottom:20px;
+}
+
+.sidebar button{
+    display:block;
+    width:100%;
+    margin-bottom:12px;
+    background:#24324b;
+}
+
+.content{
+    flex:1;
+    padding:30px;
+    color:white;
+    overflow:auto;
+}
+
+.channels{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    gap:15px;
+}
+
+.channel{
+    background:#24324b;
+    padding:20px;
+    border-radius:12px;
+    cursor:pointer;
+    text-align:center;
+}
