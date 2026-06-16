@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #181818;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+}
+
+.contenedor {
+  display: flex;
+  height: 80vh;
+}
+
+.lista {
+  width: 250px;
+  padding: 10px;
+  background: #252525;
+}
+
+.lista button {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.player {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+video {
+  width: 90%;
+  max-height: 90%;
+}
