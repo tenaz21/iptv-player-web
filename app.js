@@ -52,12 +52,25 @@ document.getElementById("connectBtn").addEventListener("click", async () => {
           <h2>📂 Categorías</h2>
         </div>
 
-        <div id="canales"
-             style="flex:1;padding:20px;overflow:auto;">
-          <h2>📺 Canales</h2>
-        </div>
+     <div id="canales"
+     style="flex:1;padding:20px;overflow:auto;">
 
-      </div>
+  <h2>📺 Canales</h2>
+
+  <video
+    id="player"
+    controls
+    autoplay
+    style="
+      width:100%;
+      max-height:500px;
+      background:black;
+      border-radius:12px;
+      margin-bottom:20px;
+    ">
+  </video>
+
+</div>
     `;
 
     const panelCategorias =
