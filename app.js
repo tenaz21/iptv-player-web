@@ -4,15 +4,9 @@ document.getElementById("connectBtn").addEventListener("click", async () => {
   const username = document.getElementById("user").value.trim();
   const password = document.getElementById("pass").value.trim();
 
-  if (!host || !username || !password) {
-    alert("Completa todos los campos.");
-    return;
-  }
-
   try {
 
-    // Login
-    const response = await fetch("http://localhost:3000/api/login", {
+    const login = await fetch("http://localhost:3000/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -24,15 +18,18 @@ document.getElementById("connectBtn").addEventListener("click", async () => {
       })
     });
 
-    const data = await response.json();
+    const data = await login.json();
 
-    if (data.user_info && data.user_info.auth === 1) {
+    if (!data.user_info || data.user_info.auth !== 1) {
+      alert("Login incorrecto");
+      return;
+    }
 
-      // Ocultar formulario
-      document.querySelector(".login-card").style.display = "none";
+    document.querySelector(".login-card").style.display = "none";
 
-      // Obtener categorías
-      const categorias = await fetch("http://localhost:3000/api/live-categories", {
+    const categorias = await fetch(
+      "http://localhost:3000/api/live-categories",
+      {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -42,52 +39,99 @@ document.getElementById("connectBtn").addEventListener("click", async () => {
           username,
           password
         })
-      });
+      }
+    );
 
-      const lista = await categorias.json();
+    const lista = await categorias.json();
 
-      // Crear pantalla principal
-      const app = document.createElement("div");
+    document.body.innerHTML = `
+      <div style="display:flex;height:100vh;color:white;">
+        
+        <div id="categorias"
+             style="width:300px;background:#16233b;padding:20px;overflow:auto;">
+          <h2>📂 Categorías</h2>
+        </div>
 
-      app.style.padding = "30px";
-      app.style.color = "white";
+        <div id="canales"
+             style="flex:1;padding:20px;overflow:auto;">
+          <h2>📺 Canales</h2>
+        </div>
 
-      app.innerHTML = `
-        <h1>📺 Categorías IPTV</h1>
-        <div id="listaCategorias"></div>
-      `;
+      </div>
+    `;
 
-      document.body.appendChild(app);
+    const panelCategorias =
+      document.getElementById("categorias");
 
-      const contenedor = document.getElementById("listaCategorias");
+    const panelCanales =
+      document.getElementById("canales");
 
-      lista.forEach(cat => {
+    lista.forEach(cat => {
 
-        const item = document.createElement("div");
+      const btn = document.createElement("div");
 
-        item.style.background = "#24324b";
-        item.style.padding = "15px";
-        item.style.margin = "10px 0";
-        item.style.borderRadius = "10px";
-        item.style.cursor = "pointer";
+      btn.textContent = cat.category_name;
 
-        item.textContent = cat.category_name;
+      btn.style.padding = "12px";
+      btn.style.margin = "10px 0";
+      btn.style.background = "#24324b";
+      btn.style.borderRadius = "10px";
+      btn.style.cursor = "pointer";
 
-        contenedor.appendChild(item);
+      btn.onclick = async () => {
 
-      });
+        panelCanales.innerHTML =
+          "<h2>📺 Cargando canales...</h2>";
 
-    } else {
+        const response = await fetch(
+          "http://localhost:3000/api/live-streams",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              host,
+              username,
+              password,
+              category_id: cat.category_id
+            })
+          }
+        );
 
-      alert("❌ Usuario o contraseña incorrectos.");
+        const canales = await response.json();
 
-    }
+        panelCanales.innerHTML =
+          `<h2>${cat.category_name}</h2>`;
+
+        canales.forEach(canal => {
+
+          const item =
+            document.createElement("div");
+
+          item.textContent =
+            canal.name;
+
+          item.style.padding = "10px";
+          item.style.marginBottom = "8px";
+          item.style.background = "#24324b";
+          item.style.borderRadius = "8px";
+
+          panelCanales.appendChild(item);
+
+        });
+
+      };
+
+      panelCategorias.appendChild(btn);
+
+    });
 
   } catch (err) {
 
     console.error(err);
 
-    alert("❌ Error al conectar.");
+    alert("Error de conexión");
 
   }
 
