@@ -1,41 +1,40 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #181818;
-  color: white;
+body{
+    background:#0d1b2a;
+    font-family:Arial,sans-serif;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
 }
 
-h1 {
-  text-align: center;
-  padding: 20px;
+.login{
+    width:360px;
+    background:#1b263b;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(0,0,0,.4);
 }
 
-.contenedor {
-  display: flex;
-  height: 80vh;
+h1{
+    text-align:center;
 }
 
-.lista {
-  width: 250px;
-  padding: 10px;
-  background: #252525;
+input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:8px;
+    box-sizing:border-box;
 }
 
-.lista button {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.player {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-video {
-  width: 90%;
-  max-height: 90%;
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
 }
