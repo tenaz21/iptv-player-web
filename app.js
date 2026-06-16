@@ -152,7 +152,11 @@ document.getElementById("connectBtn").addEventListener("click", async () => {
       const datos = await respuesta.json();
 
       // Abre el stream en una pestaña nueva
-      window.open(datos.url, "_blank");
+      const video = document.getElementById("player");
+
+video.src = datos.url;
+
+video.play();
 
     } catch (error) {
 
